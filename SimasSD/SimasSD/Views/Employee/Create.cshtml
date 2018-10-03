@@ -1,0 +1,76 @@
+﻿@model SimasSD.Models.SysEmployeeModel
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Add New Employee</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmpyName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EmpyName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EmpyName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmpyGender, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model=>model.EmpyGender,"Male", new { htmlAttributes = new { @class = "form-control", @Text = "Male" } }) Male
+            @Html.RadioButtonFor(model=>model.EmpyGender,"Female", new { htmlAttributes = new { @class = "form-control", @Text = "Female" } }) Female
+            @Html.ValidationMessageFor(model => model.EmpyGender, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmpyBranchID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model=>model.EmpyBranchID, new SelectList(ViewBag.BranchList,"Value", "Text"),htmlAttributes: new { @class = "form-control", id="empyBranchID" })
+            @Html.ValidationMessageFor(model => model.EmpyBranchID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmpyTitleID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model=>model.EmpyTitleID, new SelectList(ViewBag.TitleList, "Value", "Text"), new { @class = "form-control", id="empyTitleID" })
+            @Html.ValidationMessageFor(model => model.EmpyTitleID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.Active)
+            @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10" style="color:red">
+            @ViewBag.Message
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

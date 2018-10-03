@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SimasSD.Models.SysEmployeeModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpyID)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.EmpyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpyGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpyBranchID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpyTitleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpyID)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpyGender)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpyBranchID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpyTitleID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id= item.EmpyID }) |
+          
+            @Html.ActionLink("Delete", "Delete", new { id= item.EmpyID })
+        </td>
+    </tr>
+}
+
+</table>

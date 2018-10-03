@@ -1,0 +1,45 @@
+﻿@model SimasSD.Models.SysBranchModel
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Branch</h4>
+    <hr />
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BranchID)
+            </dt>
+
+            <dd>
+                @Html.TextBoxFor(model => model.BranchID, new { @readonly = "readonly" })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BranchName)
+            </dt>
+
+            <dd>
+                @Html.TextBoxFor(model => model.BranchName, new { @readonly = "readonly" })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Active, new { @readonly = "readonly" })
+            </dd>
+        </dl>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
